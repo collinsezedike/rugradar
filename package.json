@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@covalenthq/client-sdk": "^3.0.6",
+    "@tailwindcss/vite": "^4.2.4",
     "graphql-ws": "^6.0.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

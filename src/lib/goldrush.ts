@@ -21,7 +21,7 @@ export async function fetchTokenMeta(address: string, chain = "solana-mainnet"):
       chain as any,
       address
     );
-    const items = resp.data?.items ?? [];
+    const items: any[] = (resp.data?.items ?? []) as any[];
     const token =
       items.find((i: any) => i.contract_address?.toLowerCase() === address.toLowerCase()) ??
       items[0];
@@ -30,7 +30,7 @@ export async function fetchTokenMeta(address: string, chain = "solana-mainnet"):
       name: token?.contract_name ?? "Unknown Token",
       symbol: token?.contract_ticker_symbol ?? "???",
       decimals: token?.contract_decimals ?? 9,
-      totalSupply: token?.total_supply ?? "0",
+      totalSupply: token?.total_supply ?? token?.balance ?? "0",
       logoUrl: token?.logo_url ?? undefined,
       chain,
     };

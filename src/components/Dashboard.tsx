@@ -54,7 +54,7 @@ export function Dashboard({ state, onDismiss }: Props) {
       <div className="dashboard-body">
         {/* Left column */}
         <div className="col-left">
-          <AlertPanel alerts={state.alerts} onDismiss={onDismiss} />
+          <AlertPanel alerts={state.alerts} onDismiss={onDismiss} chain={state.chain} />
           <HolderList holders={state.topHolders} />
         </div>
 
