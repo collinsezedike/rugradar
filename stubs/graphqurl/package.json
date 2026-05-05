@@ -1,0 +1,9 @@
+{
+  "name": "graphqurl",
+  "version": "1.0.3",
+  "description": "Stub — replaces heavy CLI package not needed at runtime",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  }
+}
