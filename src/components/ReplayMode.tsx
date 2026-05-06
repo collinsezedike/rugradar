@@ -5,6 +5,7 @@ import { fetchRecentTxs, fetchTokenMeta } from "../lib/goldrush";
 import { buildReplaySession } from "../lib/replay";
 import { RugGauge } from "./RugGauge";
 import { AlertPanel } from "./AlertPanel";
+import { ReplayChart } from "./ReplayChart";
 
 interface Props { onBack: () => void }
 type PlayState = "idle" | "loading" | "playing" | "paused" | "done";
@@ -247,12 +248,12 @@ export function ReplayMode({ onBack }: Props) {
 
       {/* ── main body ─────────────────────────────────────────────────────── */}
       {session && (
-        <div className="flex flex-1 overflow-hidden gap-3 p-3">
+        <div className="flex flex-col lg:flex-row flex-1 overflow-y-auto lg:overflow-hidden gap-3 p-3">
 
           {/* Timeline rail */}
           <div
             ref={timelineRef}
-            className="flex flex-col w-72 flex-shrink-0 overflow-y-auto bg-[#0d1420] border border-[#1e2d42] rounded-lg"
+            className="flex flex-col w-full lg:w-72 lg:flex-shrink-0 lg:max-h-none max-h-64 overflow-y-auto bg-[#0d1420] border border-[#1e2d42] rounded-lg"
           >
             <div className="panel-header sticky top-0 bg-[#0d1420] z-10">
               <span className="panel-title">TIMELINE</span>
@@ -311,10 +312,14 @@ export function ReplayMode({ onBack }: Props) {
             })}
           </div>
 
-          {/* Center — gauge + event card */}
+          {/* Center — gauge + chart + event card */}
           <div className="flex flex-col items-center gap-3 flex-1 min-w-0">
             <div className="w-full max-w-xs">
               <RugGauge scores={scores} />
+            </div>
+
+            <div className="w-full">
+              <ReplayChart events={session.events} cursor={cursor} />
             </div>
 
             {event && (
@@ -359,7 +364,7 @@ export function ReplayMode({ onBack }: Props) {
           </div>
 
           {/* Right — alert feed */}
-          <div className="w-72 flex-shrink-0 overflow-y-auto bg-[#0d1420] border border-[#1e2d42] rounded-lg">
+          <div className="w-full lg:w-72 lg:flex-shrink-0 overflow-y-auto bg-[#0d1420] border border-[#1e2d42] rounded-lg">
             <AlertPanel alerts={allAlerts} onDismiss={() => {}} chain="solana-mainnet" />
           </div>
         </div>

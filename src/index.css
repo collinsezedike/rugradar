@@ -247,6 +247,16 @@ a { color: var(--accent); }
   overflow: hidden;
 }
 
+@media (max-width: 900px) {
+  .dashboard-body {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+    height: auto;
+    flex: unset;
+  }
+  .col-left, .col-right { overflow: visible; }
+}
+
 .col-left, .col-right {
   display: flex;
   flex-direction: column;
