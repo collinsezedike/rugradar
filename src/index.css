@@ -18,7 +18,7 @@
   --red:       #ff2d2d;
   --red-glow:  rgba(255,45,45,.25);
   --font-mono: "Cascadia Code", "Fira Code", "JetBrains Mono", "Consolas", monospace;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 body {
@@ -222,7 +222,7 @@ a { color: var(--accent); }
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
 }
-.panel-title { font-size: .7rem; font-weight: 700; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; }
+.panel-title { font-size: .75rem; font-weight: 700; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; }
 
 .panel-badge {
   font-size: .65rem;
@@ -345,9 +345,9 @@ a { color: var(--accent); }
   min-width: 90px;
 }
 .metric-card.metric-danger { border-color: var(--red); background: rgba(255,45,45,.06); }
-.metric-label { font-size: .6rem; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
-.metric-value { font-size: .92rem; font-weight: 700; color: var(--text-head); }
-.metric-sub   { font-size: .68rem; color: var(--text-dim); }
+.metric-label { font-size: .7rem; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+.metric-value { font-size: .95rem; font-weight: 700; color: var(--text-head); }
+.metric-sub   { font-size: .75rem; color: var(--text-dim); }
 
 /* ── Rug gauge ──────────────────────────────────────────────────────────────── */
 .rug-gauge {
@@ -361,15 +361,15 @@ a { color: var(--accent); }
   gap: .75rem;
   width: 100%;
 }
-.gauge-title { font-size: .65rem; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; }
+.gauge-title { font-size: .72rem; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; }
 .gauge-arc { display: flex; justify-content: center; }
 .gauge-breakdown { width: 100%; display: flex; flex-direction: column; gap: .45rem; }
 
 .sub-score { display: flex; align-items: center; gap: .5rem; }
-.sub-score-label { width: 72px; font-size: .62rem; letter-spacing: .5px; color: var(--text-dim); flex-shrink: 0; }
+.sub-score-label { width: 80px; font-size: .72rem; letter-spacing: .5px; color: var(--text-dim); flex-shrink: 0; }
 .sub-score-bar-track { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
 .sub-score-bar-fill  { height: 100%; border-radius: 2px; transition: width .5s ease; }
-.sub-score-value { width: 24px; text-align: right; font-size: .72rem; font-weight: 700; }
+.sub-score-value { width: 28px; text-align: right; font-size: .78rem; font-weight: 700; }
 
 /* ── Alert panel ────────────────────────────────────────────────────────────── */
 .alert-panel {
@@ -409,16 +409,16 @@ a { color: var(--accent); }
 
 .alert-header-row { display: flex; align-items: center; gap: .4rem; margin-bottom: .25rem; }
 .alert-icon    { font-size: .8rem; }
-.alert-message { flex: 1; font-size: .78rem; font-weight: 600; color: var(--text-head); }
-.alert-time    { font-size: .65rem; color: var(--text-dim); flex-shrink: 0; }
+.alert-message { flex: 1; font-size: .82rem; font-weight: 600; color: var(--text-head); }
+.alert-time    { font-size: .72rem; color: var(--text-dim); flex-shrink: 0; }
 .alert-dismiss {
   background: none; border: none; color: var(--text-dim);
   font-size: .9rem; line-height: 1; padding: 0 .2rem;
   flex-shrink: 0;
 }
 .alert-dismiss:hover { color: var(--text-head); }
-.alert-detail { font-size: .72rem; color: var(--text-dim); }
-.alert-tx      { font-size: .68rem; color: var(--text-dim); margin-top: .2rem; }
+.alert-detail { font-size: .78rem; color: var(--text-dim); }
+.alert-tx      { font-size: .74rem; color: var(--text-dim); margin-top: .2rem; }
 .alert-tx-hash { color: var(--accent); }
 
 /* ── Holder list ────────────────────────────────────────────────────────────── */
@@ -433,14 +433,14 @@ a { color: var(--accent); }
   display: flex;
   align-items: center;
   gap: .4rem;
-  padding: .45rem .75rem;
+  padding: .5rem .75rem;
   border-bottom: 1px solid var(--border);
-  font-size: .72rem;
+  font-size: .78rem;
 }
 .holder-row-dev { background: rgba(255,107,0,.05); }
 .holder-rank  { color: var(--text-dim); width: 18px; flex-shrink: 0; }
 .holder-addr  { color: var(--accent); flex-shrink: 0; }
-.holder-label { font-size: .62rem; color: var(--orange); padding: .1rem .3rem; background: rgba(255,107,0,.15); border-radius: 3px; flex-shrink: 0; }
+.holder-label { font-size: .68rem; color: var(--orange); padding: .1rem .3rem; background: rgba(255,107,0,.15); border-radius: 3px; flex-shrink: 0; }
 .holder-bar-track { flex: 1; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
 .holder-bar-fill  { height: 100%; border-radius: 2px; }
 .holder-pct   { color: var(--text); width: 38px; text-align: right; flex-shrink: 0; }
@@ -462,9 +462,9 @@ a { color: var(--accent); }
   display: flex;
   align-items: center;
   gap: .4rem;
-  padding: .38rem .6rem;
+  padding: .45rem .6rem;
   border-bottom: 1px solid var(--border);
-  font-size: .7rem;
+  font-size: .78rem;
   transition: background .2s;
 }
 .tx-row:hover { background: rgba(255,255,255,.02); }
@@ -472,9 +472,9 @@ a { color: var(--accent); }
 @keyframes flashNew { from { background: rgba(0,212,255,.1); } }
 
 .tx-badge {
-  font-size: .6rem;
+  font-size: .68rem;
   font-weight: 700;
-  padding: .1rem .3rem;
+  padding: .15rem .35rem;
   border-radius: 3px;
   flex-shrink: 0;
   letter-spacing: .5px;
@@ -558,8 +558,8 @@ a { color: var(--accent); }
   flex-shrink: 0;
 }
 .summary-item { display: flex; flex-direction: column; gap: .15rem; }
-.summary-label { font-size: .6rem; letter-spacing: 1.5px; color: var(--text-dim); text-transform: uppercase; }
-.summary-value { font-size: .82rem; font-weight: 700; color: var(--text-head); }
+.summary-label { font-size: .68rem; letter-spacing: 1.5px; color: var(--text-dim); text-transform: uppercase; }
+.summary-value { font-size: .88rem; font-weight: 700; color: var(--text-head); }
 .summary-danger { color: var(--red); }
 
 .replay-controls {

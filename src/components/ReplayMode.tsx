@@ -312,55 +312,64 @@ export function ReplayMode({ onBack }: Props) {
             })}
           </div>
 
-          {/* Center — gauge + chart + event card */}
-          <div className="flex flex-col items-center gap-3 flex-1 min-w-0">
-            <div className="w-full max-w-xs">
-              <RugGauge scores={scores} />
-            </div>
+          {/* Center — chart on top, gauge + event card side-by-side below */}
+          <div className="flex flex-col gap-3 flex-1 min-w-0">
+            {/* Chart — full width */}
+            <ReplayChart events={session.events} cursor={cursor} />
 
-            <div className="w-full">
-              <ReplayChart events={session.events} cursor={cursor} />
-            </div>
-
-            {event && (
-              <div className="w-full max-w-xs bg-[#0d1420] border border-[#1e2d42] rounded-lg p-4">
-                <div className="text-[0.6rem] tracking-[3px] text-white/30 uppercase mb-2 text-center">
-                  Current Event · {relTime(event.timestamp)}
-                </div>
-                <div className={`text-center text-lg font-bold mb-1 ${TYPE_COLOR[event.type] ?? ""}`}>
-                  {TYPE_LABEL[event.type] ?? event.type}
-                </div>
-                <div className="text-center text-[0.72rem] text-cyan-400/80 font-mono mb-1">
-                  {shortAddr(event.fromAddress)}
-                  {event.toAddress ? ` → ${shortAddr(event.toAddress)}` : ""}
-                </div>
-                {event.valueUsd != null && (
-                  <div className="text-center text-2xl font-bold text-white mb-1">
-                    {fmtUsd(event.valueUsd)}
-                  </div>
-                )}
-                <div className="text-center text-[0.65rem] text-white/30">
-                  {fmtTime(event.timestamp)}
-                </div>
-
-                {/* pool snapshot */}
-                {event.poolSnapshot && (
-                  <div className="mt-3 grid grid-cols-2 gap-2">
-                    {[
-                      ["Liquidity", fmtUsd(event.poolSnapshot.liquidityUsd)],
-                      ["Sell Ratio", `${(event.poolSnapshot.sellPressureRatio ?? 1).toFixed(1)}×`],
-                      ["Buy Vol",   fmtUsd(event.poolSnapshot.buyVolume1h)],
-                      ["Sell Vol",  fmtUsd(event.poolSnapshot.sellVolume1h)],
-                    ].map(([label, val]) => (
-                      <div key={label} className="bg-white/5 rounded p-2 text-center">
-                        <div className="text-[0.55rem] text-white/30 uppercase tracking-widest">{label}</div>
-                        <div className="text-[0.8rem] font-bold text-white/80">{val}</div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+            {/* Bottom row: gauge left, event card right */}
+            <div className="flex gap-3 items-start">
+              {/* Gauge */}
+              <div className="w-52 flex-shrink-0">
+                <RugGauge scores={scores} />
               </div>
-            )}
+
+              {/* Event card */}
+              {event ? (
+                <div className="flex-1 bg-[#0d1420] border border-[#1e2d42] rounded-lg p-4">
+                  <div className="text-[0.68rem] tracking-[3px] text-white/30 uppercase mb-3">
+                    Current Event · {relTime(event.timestamp)}
+                  </div>
+
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className={`text-xl font-bold ${TYPE_COLOR[event.type] ?? ""}`}>
+                      {TYPE_LABEL[event.type] ?? event.type}
+                    </span>
+                    {event.valueUsd != null && (
+                      <span className="text-2xl font-bold text-white">
+                        {fmtUsd(event.valueUsd)}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="text-[0.78rem] text-cyan-400/80 font-mono mb-1">
+                    {shortAddr(event.fromAddress)}
+                    {event.toAddress ? ` → ${shortAddr(event.toAddress)}` : ""}
+                  </div>
+                  <div className="text-[0.72rem] text-white/30 mb-3">
+                    {fmtTime(event.timestamp)}
+                  </div>
+
+                  {event.poolSnapshot && (
+                    <div className="grid grid-cols-2 gap-2">
+                      {[
+                        ["Liquidity",  fmtUsd(event.poolSnapshot.liquidityUsd)],
+                        ["Sell Ratio", `${(event.poolSnapshot.sellPressureRatio ?? 1).toFixed(1)}×`],
+                        ["Buy Vol",    fmtUsd(event.poolSnapshot.buyVolume1h)],
+                        ["Sell Vol",   fmtUsd(event.poolSnapshot.sellVolume1h)],
+                      ].map(([label, val]) => (
+                        <div key={label} className="bg-white/5 rounded p-2">
+                          <div className="text-[0.62rem] text-white/30 uppercase tracking-widest mb-0.5">{label}</div>
+                          <div className="text-[0.88rem] font-bold text-white/80">{val}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="flex-1" />
+              )}
+            </div>
           </div>
 
           {/* Right — alert feed */}

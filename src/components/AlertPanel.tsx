@@ -100,10 +100,10 @@ export function AlertPanel({ alerts, onDismiss, chain = "solana-mainnet" }: Prop
                 {/* Header row */}
                 <div className="flex items-center gap-2 mb-1">
                   <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${styles.dot}`} />
-                  <span className={`text-[0.6rem] font-bold tracking-widest px-1.5 py-0.5 rounded ${styles.badge}`}>
+                  <span className={`text-[0.68rem] font-bold tracking-widest px-1.5 py-0.5 rounded ${styles.badge}`}>
                     {meta.label}
                   </span>
-                  <span className="flex-1 text-[0.78rem] font-semibold text-white/90 leading-tight">
+                  <span className="flex-1 text-[0.82rem] font-semibold text-white/90 leading-tight">
                     {alert.message}
                   </span>
                   <span className="text-[0.62rem] text-white/30 flex-shrink-0 tabular-nums">
@@ -119,23 +119,23 @@ export function AlertPanel({ alerts, onDismiss, chain = "solana-mainnet" }: Prop
                 </div>
 
                 {/* Detail */}
-                <p className="text-[0.71rem] text-white/50 leading-snug ml-3.5">
+                <p className="text-[0.78rem] text-white/50 leading-snug ml-3.5">
                   {alert.detail}{fmtUsd(alert.value)}
                 </p>
 
                 {/* Solscan link */}
                 {alert.txHash && (
                   <div className="flex items-center gap-1.5 mt-1.5 ml-3.5">
-                    <span className="text-[0.62rem] text-white/30">TX</span>
+                    <span className="text-[0.7rem] text-white/30">TX</span>
                     <a
                       href={solscanTxUrl(alert.txHash, chain)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[0.62rem] text-cyan-400/80 hover:text-cyan-300 font-mono transition-colors underline underline-offset-2"
+                      className="text-[0.7rem] text-cyan-400/80 hover:text-cyan-300 font-mono transition-colors underline underline-offset-2"
                     >
                       {shortAddr(alert.txHash)}
                     </a>
-                    <span className="text-[0.55rem] text-white/20">↗</span>
+                    <span className="text-[0.65rem] text-white/20">↗</span>
                   </div>
                 )}
               </div>
